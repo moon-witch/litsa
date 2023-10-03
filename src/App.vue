@@ -1,22 +1,10 @@
 <script setup lang="ts">
-import MainButton from './components/buttons/BasicButton.vue';
-
+import { BasicButton } from '../dist/main';
 </script>
 
 <template>
-  <div class="appContainer">
-    <MainButton color="dark" icon="pi pi-check">Basic Button</MainButton>
-    <MainButton color="light" icon="pi pi-check">Basic Button</MainButton>
-  </div>
+  <BasicButton>Hallo button</BasicButton>
 </template>
 
-<style scoped lang="scss">
-.appContainer {
-  display: flex;
-  flex-direction: column;
-  height: 100dvh;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--walnut-brown);
-}
+<style scoped>
 </style>

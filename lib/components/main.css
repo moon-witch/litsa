@@ -1,0 +1,12 @@
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  :root {
+    --black-olive: #48483ad5;
+    --walnut-brown: #5C574F;
+    --battleship-gray: #74776B;
+    --rose-quarz: #A28F9D;
+    --honeydew: #dff8ebc9;
+  }

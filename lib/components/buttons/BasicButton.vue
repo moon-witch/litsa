@@ -29,6 +29,8 @@ const props = defineProps({
 </template>
 
 <style scoped lang="scss">
+@import './../main.css';
+
 button {
   margin: 0.2rem;
   padding: 0.6rem 1.2rem;
@@ -53,5 +55,47 @@ button:hover {
 
 .icon-right {
   padding-left: 0.6rem;
+}
+
+.darkbutton {
+  background-color: var(--honeydew);
+  color: var(--walnut-brown);
+  box-shadow: inset 0 0 3px 0 var(--black-olive);
+}
+
+.darkbutton.textbutton {
+  background: transparent;
+  color: var(--honeydew);
+  box-shadow: none;
+}
+
+.darkbutton.textbutton:hover {
+  background-color: var(--black-olive);
+}
+
+.darkbutton:active {
+  box-shadow: inset 0 0 4px 2px var(--black-olive);
+  font-size: small;
+}
+
+.lightbutton {
+  background-color: var(--black-olive);
+  color: var(--honeydew);
+  box-shadow: inset 0 0 3px 0 var(--battleship-gray);
+}
+
+.lightbutton.textbutton {
+  background: transparent;
+  color: var(--walnut-brown);
+  box-shadow: none;
+}
+
+.lightbutton.textbutton:hover {
+  background-color: var(--rose-quarz);
+}
+
+.lightbutton:active {
+  box-shadow: inset 0 0 4px 2px var(--battleship-gray);
+  font-size: small;
 }
 </style>

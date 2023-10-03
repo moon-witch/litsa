@@ -1,61 +1,36 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import * as path from 'path'
-import typescript2 from 'rollup-plugin-typescript2';
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
 import dts from "vite-plugin-dts";
+import { libInjectCss } from "vite-plugin-lib-inject-css";
+import { extname, relative, resolve } from "path";
+import { fileURLToPath } from "node:url";
+import { glob } from "glob";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    dts({
-      insertTypesEntry: true,
-    }),
-    typescript2({
-      check: false,
-      include: ["src/components/**/*.vue"],
-      tsconfigOverride: {
-        compilerOptions: {
-          outDir: "dist",
-          sourceMap: true,
-          declaration: true,
-          declarationMap: true,
-        },
-      },
-      exclude: ["vite.config.ts"]
-    })
-  ],
+  plugins: [vue(), libInjectCss(), dts({ include: ["lib"] })],
   build: {
-    cssCodeSplit: true,
     lib: {
-      // Could also be a dictionary or array of multiple entry points
-      entry: "src/components/litsa.ts",
-      name: 'litsa',
-      formats: ["es", "cjs", "umd"],
-      fileName: format => `litsa.${format}.js`
+      entry: resolve(__dirname, "lib/main.ts"),
+      formats: ["es"],
     },
+    copyPublicDir: false,
     rollupOptions: {
-      // make sure to externalize deps that should not be bundled
-      // into your library
-      input: {
-        main: path.resolve(__dirname, "src/components/main.ts")
-      },
-      external: ['vue', 'primeicons', 'sass'],
+      external: ["vue"],
+      input: Object.fromEntries(
+        glob.sync("lib/**/*.{ts,vue}").map((file) => [
+          // The name of the entry point
+          // lib/nested/foo.ts becomes nested/foo
+          relative("lib", file.slice(0, file.length - extname(file).length)),
+          // The absolute path to the entry file
+          // lib/nested/foo.ts becomes /project/lib/nested/foo.ts
+          fileURLToPath(new URL(file, import.meta.url)),
+        ])
+      ),
       output: {
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name === 'main.css') return 'litsa.css';
-          return assetInfo.name;
-        },
-        exports: "named",
-        globals: {
-          vue: 'Vue',
-        },
+        assetFileNames: "assets/[name][extname]",
+        entryFileNames: "[name].js",
       },
     },
   },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
-    },
-  },
-})
+});
