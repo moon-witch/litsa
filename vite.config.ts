@@ -29,7 +29,7 @@ export default defineConfig({
     cssCodeSplit: true,
     lib: {
       // Could also be a dictionary or array of multiple entry points
-      entry: "src/components/main.ts",
+      entry: "src/components/litsa.ts",
       name: 'litsa',
       formats: ["es", "cjs", "umd"],
       fileName: format => `litsa.${format}.js`
