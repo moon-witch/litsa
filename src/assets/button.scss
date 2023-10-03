@@ -1,0 +1,41 @@
+.darkbutton {
+  background-color: var(--honeydew);
+  color: var(--walnut-brown);
+  box-shadow: inset 0 0 3px 0 var(--black-olive);
+
+  &.textbutton {
+    background: transparent;
+    color: var(--honeydew);
+    box-shadow: none;
+  }
+
+  &.textbutton:hover {
+    background-color: var(--black-olive);
+  }
+}
+
+.darkbutton:active {
+  box-shadow: inset 0 0 4px 2px var(--black-olive);
+  font-size: small;
+}
+
+.lightbutton {
+  background-color: var(--black-olive);
+  color: var(--honeydew);
+  box-shadow: inset 0 0 3px 0 var(--battleship-gray);
+
+  &.textbutton {
+    background: transparent;
+    color: var(--walnut-brown);
+    box-shadow: none;
+  }
+
+  &.textbutton:hover {
+    background-color: var(--rose-quarz);
+  }
+}
+
+.lightbutton:active {
+  box-shadow: inset 0 0 4px 2px var(--battleship-gray);
+  font-size: small;
+}
