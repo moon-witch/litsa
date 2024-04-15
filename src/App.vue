@@ -1,12 +1,20 @@
 <script setup lang="ts">
 import BasicButton  from '../lib/components/buttons/BasicButton.vue';
-import DancingRingLoader from "../lib/components/loaders/DancingRingLoader.vue";
+import Billboard from "../lib/components/typography/Billboard.vue";
+
+const sliderContent = [
+  "Web Development",
+  "WordPress Development",
+  "App Development",
+  "Plugin Development",
+  "CRM Integrations"
+];
 </script>
 
 <template>
   <div class="container">
     <BasicButton>Hallo button</BasicButton>
-    <DancingRingLoader />
+    <Billboard pre-text="We excel at" :slider-content="sliderContent"/>
   </div>
 </template>
 
@@ -17,6 +25,7 @@ import DancingRingLoader from "../lib/components/loaders/DancingRingLoader.vue";
   justify-content: center;
   align-items: center;
   height: 100dvh;
+  background: lightgrey;
 }
 
 .border {
