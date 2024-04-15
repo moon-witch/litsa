@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import BasicButton  from '../lib/components/buttons/BasicButton.vue';
-import SmoothBurger from "../lib/components/menuToggles/SmoothBurger.vue";
+import DancingRingLoader from "../lib/components/loaders/DancingRingLoader.vue";
 </script>
 
 <template>
   <div class="container">
     <BasicButton>Hallo button</BasicButton>
-    <SmoothBurger />
+    <DancingRingLoader />
   </div>
 </template>
 
