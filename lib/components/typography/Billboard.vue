@@ -77,14 +77,10 @@ onUnmounted(() => {
   font-family: v-bind(font);
   white-space: nowrap;
   flex-wrap: nowrap;
-  color: v-bind(preTextColor)
-}
-
-@media(max-width: 740px) {
-  #slider {
-    flex-direction: column;
-    align-items: center;
-  }
+  color: v-bind(preTextColor);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #sliderValue {
