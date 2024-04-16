@@ -80,6 +80,13 @@ onUnmounted(() => {
   color: v-bind(preTextColor)
 }
 
+@media(max-width: 740px) {
+  #slider {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 #sliderValue {
   display: flex;
   color: v-bind(sliderContentColor);
@@ -109,6 +116,7 @@ onUnmounted(() => {
 .fade-leave-from {
   opacity: 1;
   transform: translateY(0);
+  display: none !important;
 }
 
 .fade-leave-to {
